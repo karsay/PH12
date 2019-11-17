@@ -14,12 +14,7 @@
 </head>
 <body>
 <?php
-$now = time();
-print $now;
-print "<br>";
-$timestanp = mktime(0,0,0,1,1,2000);
-print $timestanp;
-print "<br>";
+
 ?>
 </body>
 </html>
