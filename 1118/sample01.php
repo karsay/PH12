@@ -17,9 +17,9 @@
 $num = rand(0,50);
 if($num % 2 == 1)
 {
-  print($num . "は奇数");
+  print "<h1>" . $num . "は奇数</h1>";
 } else {
-  print($num . "は偶数");
+  print "<h1>" . $num . "は偶数</h1>";
 }
 
 ?>
