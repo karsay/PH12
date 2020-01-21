@@ -1,0 +1,19 @@
+■localhost SETUP
+
+-- >mysql -u root -p
+-- >root
+-- >use nhsxxxxxdb;
+-- >source c:\create_meibo.sql
+-- >set names sjis;
+-- >select * from テーブル名;
+
+
+
+■server SETUP
+
+-- >mysql -h 192.168.121.16 -u nhsxxxxx -p
+-- >byyyymmdd
+-- >use nhsxxxxxdb;
+-- >source c:\create_meibo.sql
+-- >set names sjis;
+-- >select * from テーブル名;

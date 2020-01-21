@@ -17,6 +17,7 @@
 $tokuten = 80;
 print "得点": . $tokuten;
 $i = 0;
+
 while($i < $tokuten)
 {
   print "＊";

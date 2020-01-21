@@ -1,0 +1,90 @@
+sql文
+読む　select文
+追加　insert
+削除　delete
+更新  update
+(修正)
+
+#mysqli_connect
+mysqlサーバへ接続する関数
+mysqlサーバへの接続を表すIDを返す
+構文
+ $con = 
+  mysqli_connect(
+    "ホスト名",
+    "ユーザID",
+    "パスワード"
+  );
+コーディング例
+ $con = 
+  mysqli_connect(
+    "localhost",
+    "karsay",
+    "karsay"
+  );
+
+#mysqli_set_charset
+データベースに保存されているデータの文字コードを指定する関数
+構文
+mysqli_set_charset (
+  Mysqlサーバへの接続を表すID,
+  "文字コード"
+);
+
+mysqli_set_charset (
+  $con,
+  "UTF-8"
+);
+
+mysqli_select_db
+接続したMySQLサーバ内にあるデータベースを使用可能にする関数
+$isConnected = 
+  mysqli_select_db(
+    Mysqlサーバへの接続を表すID,
+    "DB名"
+  );
+  Booleanで返却
+
+$isConnected = 
+  mysqli_select_db(
+    $con,
+    "nhs90556"
+  );
+
+サーバの切断
+mysqli_close
+
+mysqli_close("mysqlサーバの接続ID")
+
+構文　例
+mysqli_close($con)
+
+sqlの実行
+mysqli_cuery()
+SQLを実行する関数
+selectで取得したデータを返す
+
+$result = 
+  mysqli_cuery(
+    DBとの接続を表すID,
+    "SQL文"
+  );
+
+$result = 
+  mysqli_cuery(
+    $con,
+    "SELECT id FROM users";
+  );
+
+mysqli_fetch_array
+結果セット内でカーソルがさしている行で返し
+カーソルを次に進める関数
+レコードがあればtrueを返し値を転送
+なければfalseを返す。
+while($row = mysqli_fetch_array($result)) { 
+  print $row["id"] . "<br>";
+  print $row["name"] . "<br>"
+}
+
+mysqli_free_result()関数でメモリを開放
+mysqli_free_result(結果セット)

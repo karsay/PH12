@@ -1,0 +1,34 @@
+array関数
+配列定義関数
+
+
+□インデックス配列
+$indexArray = array("A","B","C","D");
+
+□連想配列
+$mapArray = array(
+  "name" => "A",
+  "add" => "B",
+  "tel" => "C",
+  "age" => "D"
+);
+
+□末尾への追加
+インデックス配列のみ有効
+$indexArray[] = "E";
+
+□explode
+CSVなど区切り文字が存在する場合、そこで分割して配列を生成
+
+$indexArray = explode(区切り文字,対象文字列)
+
+$nums = explode(",", "a,b,c,d");
+foreach($nums as $num){
+  print($num . "\n");
+}
+
+配列への要素数の取得
+count()
+sizeof()
+
+いずれか

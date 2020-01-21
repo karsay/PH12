@@ -14,7 +14,7 @@
 </head>
 <body>
 <?php
-print(date("y年n月j日"));
+print(date("y年n月j日", ));
 print("<br>");
 print(date("Y年m月d日"));
 ?>
