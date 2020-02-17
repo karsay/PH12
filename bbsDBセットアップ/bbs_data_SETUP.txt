@@ -1,0 +1,23 @@
+■準備
+use nhsxxxxxdb;　→　各自の学籍番号に修正する
+create_bbs.sqlをCドライブの直下にコピーする
+
+■localhost SETUP
+
+-- >mysql -u MySQLのID -p
+-- >パスワード
+-- >use nhsxxxxxdb;
+-- >source c:\create_bbs.sql
+-- >set names sjis;
+-- >select * from bbs_tbl;
+
+
+
+■server SETUP
+
+-- >mysql -h 192.168.121.16 -u nhsxxxxx -p
+-- >byyyymmdd
+-- >use nhsxxxxxdb;
+-- >source c:\create_bbs.sql
+-- >set names sjis;
+-- >select * from bbs_tbl;

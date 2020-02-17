@@ -50,45 +50,37 @@ StyleSheet記述  -->
   }
 
   // ログイン画面から受け取り
-  // $stdId = h($_POST["txtID"]); 
-  // $stdPass = h($_POST["txtPASS"]);
   $stdId = $_POST["txtID"];
   $stdPass = $_POST["txtPASS"];
 
-  // $escp_stdId1 = str_replace("'", "&apos", $stdId);
-  // $escp_stdPass1 = str_replace("'", "&apos", $stdPass);
-  // $escp_stdId2 = str_replace("\"", "&quot", $escp_stdId1);
-  // $escp_stdPass2 = str_replace("\"", "&quot", $escp_stdPass1);
-
   //SQL文の作成
-  // $strSQL  = " select * from meibo_tbl where cus_id = '$stdId' and cus_pas = '$stdPass'";
-  $strSQL = " select cus_pas, cus_name from meibo_tbl where cus_id = '$stdId'";
-
+  // $strSQL  = " select * from meibo_tbl where cus_id = '$stdId' and cus_pas = '' or A '";
+  $strSQL = " SELECT cus_pas, cus_name, cus_id FROM meibo_tbl WHERE cus_id = '$stdId'";
   //SQL文を実行する。
   $db_result = mysqli_query($db_link, $strSQL);
-
   //取得したデータ件数を調べる
   $db_cnt = mysqli_num_rows($db_result);
-
-  if ($db_cnt == 0 || $db_cnt > 1) {
-    //取得された件数が２以上のとき
+  //一致したレコードを取得
+  $db_row = mysqli_fetch_array($db_result);
+  // 入力されたIDと取得されたレコードのIDを比較
+  if ($db_row["cus_id"] === $stdId) {
+    // パスワードが一致したら実行
+    if ($db_row["cus_pas"] === $stdPass) {
+      print "ようこそ" . $db_row["cus_name"] . "さん";
+    } else {
+      // パスワードが違うとき
+      print "<font color=red>";
+      print "パスワードが違います";
+      print "</font>";
+    }
+  } else {
+    //入力されたIDと取得されたレコードのIDが違うとき
     print "<font color=red>";
     print "IDが違います";
     print "</font>";
-  } else {
-    while ($db_row = mysqli_fetch_array($db_result)) {
-      // パスワードが一致した場合
-      if ($db_row["cus_pas"] == $stdPass) {
-        print "ようこそ" . $db_row["cus_name"] . "さん";
-      } else {
-        // パスワードが違うとき
-        print "<font color=red>";
-        print "パスワードが違います";
-        print "</font>";
-      }
-    }
-    mysqli_free_result($db_result);
   }
+
+  mysqli_free_result($db_result);
   //MySqlサーバ切断
   mysqli_close($db_link);
 

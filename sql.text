@@ -88,3 +88,7 @@ while($row = mysqli_fetch_array($result)) {
 
 mysqli_free_result()関数でメモリを開放
 mysqli_free_result(結果セット)
+
+UPDATE テーブル名 SET 
+フィールド名 = データ1, フィールド2 = データ2
+WHERE 更新条件
